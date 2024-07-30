@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {gitLogOneLine} from "./utils";
+import {gitLogOneLine} from "./gitUtils";
 
 const generateChangelog = async (changelogFile: string, newVersion: string, newVersionTitle: string, fromTag: string = 'latest') => {
 
