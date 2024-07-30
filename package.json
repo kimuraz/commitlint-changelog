@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc index.ts --outDir dist",
-    "demo": "tsc index.ts --outDir dist && node dist/index.js"
+    "demo": "tsc index.ts --outDir dist && node dist/index.js",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,10 @@
   "dependencies": {
     "@types/node": "^22.0.0",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.1.4"
   }
 }
