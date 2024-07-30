@@ -1,0 +1,1 @@
+export type PostLineProcess = (line: string[]) => string[];
