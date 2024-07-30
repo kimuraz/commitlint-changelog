@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import {gitLogOneLine} from "./gitUtils";
-import {getCommitMessagesObjByType} from "./commitLint";
+import {getCommitMessagesObjByType} from "./commitLintUtils";
 
 const generateChangelog = async (changelogFile: string, newVersion: string, newVersionTitle: string, fromTag: string = 'latest') => {
 

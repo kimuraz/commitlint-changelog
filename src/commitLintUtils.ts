@@ -1,4 +1,4 @@
-const commitLintTypes = {
+export const commitLintTypes = {
     feat: 'Features',
     fix: 'Bug Fixes',
     docs: 'Documentation',
@@ -7,11 +7,12 @@ const commitLintTypes = {
     perf: 'Performance Improvements',
     test: 'Tests',
     build: 'Build System',
+    ci: 'Continuous Integration',
 } as { [key: string]: string };
 
 export const getTypeByCommitMessage = (message: string): string => {
     for (const type in commitLintTypes) {
-        const rgx = new RegExp(`(${type})(\\([^\\)]+\\))?`, 'i');
+        const rgx = new RegExp(`(${type})(\\([^\\)]+\\))?:`, 'i');
         if (rgx.test(message)) {
             return commitLintTypes[type];
         }
