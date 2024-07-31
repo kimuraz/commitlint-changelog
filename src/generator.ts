@@ -9,7 +9,7 @@ export const appendReleaseChanges = (logLines: string[], changelog: string, newV
         sections.push(`### ${type} \n\n- ${logTypeMap[type].join('\n- ')}`);
     });
     return changelog.replace(
-        '# Changelog \n\n', `# Changelog \n\n## ${newVersion} ${newVersionTitle} \n${sections.join('\n\n')}\n`
+        '# Changelog \n\n', `# Changelog \n\n## ${newVersion} - ${newVersionTitle} \n${sections.join('\n\n')}\n`
     );
 }
 
