@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
+  "bin": {
+    "cchg": "dist/index.js"
+  },
   "scripts": {
     "test": "vitest --run",
     "test:watch": "vitest",

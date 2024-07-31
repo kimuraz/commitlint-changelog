@@ -9,6 +9,7 @@ import { initializeConfig } from "./src/configUtils";
 const program = new Command();
 
 program
+    .name('cchg')
     .option('-s, --start-tag <startTag>', 'Start tag/commit/ref for changelog generation', 'latest')
     .option('-v, --version <version>', 'New version', '')
     .option('-t, --title <title>', 'New version title', '')

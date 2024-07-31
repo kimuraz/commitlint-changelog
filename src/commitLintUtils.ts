@@ -6,7 +6,7 @@ export const commitLintTypes = {
     refactor: 'Code Refactoring',
     perf: 'Performance Improvements',
     test: 'Tests',
-    build: 'Build System',
+    build: 'Build',
     ci: 'Continuous Integration',
 } as { [key: string]: string };
 

@@ -1,6 +1,11 @@
 # Changelog 
 
-## 0.0.1 - Commitlint Changelog 
+## 0.0.1 - Commitlint changelog MVP 
+### Build 
+
+- 65a94b0 build(0.0.1): mvp
+- a83ed73 build: mvp
+
 ### Code Refactoring 
 
 - 92f036f refactor(git): rename utils to git utils
