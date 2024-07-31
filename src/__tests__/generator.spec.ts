@@ -1,7 +1,7 @@
 import {vi, describe, it, expect, Mock} from 'vitest';
-import generateChangelog  from './generator';
+import generateChangelog  from '../generator';
 import { readFileSync, writeFileSync, existsSync } from "fs";
-import { gitLogOneLine } from './gitUtils';
+import { gitLogOneLine } from '../gitUtils';
 
 vi.mock('fs', () => ({
     existsSync: vi.fn(),
@@ -9,7 +9,7 @@ vi.mock('fs', () => ({
     writeFileSync: vi.fn(),
 }));
 
-vi.mock('./gitUtils', () => ({
+vi.mock('../gitUtils', () => ({
     gitLogOneLine: vi.fn(),
 }));
 

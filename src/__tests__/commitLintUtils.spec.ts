@@ -1,6 +1,6 @@
 import { vi, describe, it, expect } from 'vitest';
 
-import { getCommitMessagesObjByType, getTypeByCommitMessage, commitLintTypes } from "./commitLintUtils";
+import { getCommitMessagesObjByType, getTypeByCommitMessage, commitLintTypes } from "../commitLintUtils";
 
 describe('commitLintUtils', () => {
     const testData = [

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { GitError } from "./errors";
+import { GitError } from "../errors";
 
 describe('errors', () => {
     it('GitError', () => {
