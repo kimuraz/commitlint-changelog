@@ -10,7 +10,7 @@ export const appendReleaseChanges = (logLines: string[], changelog: string, newV
     sections.push(`### ${type} \n\n- ${logTypeMap[type].join('\n- ')}`);
   });
   return changelog.replace(
-    '# Changelog \n\n', `# Changelog \n\n## ${newVersion} - ${newVersionTitle} \n${sections.join('\n\n')}\n`
+    '# Changelog \n\n', `# Changelog \n\n## ${newVersion} - ${newVersionTitle} \n${sections.join('\n\n')}\n--\n\n`
   );
 }
 
@@ -23,7 +23,7 @@ const generateChangelog = async (config: Config) => {
   if (fs.existsSync(changelogFile)) {
     const content = fs.readFileSync(changelogFile, {
       encoding: 'utf-8',
-      flag: 'w+',
+      flag: 'r',
     });
 
     if (content) {
@@ -37,7 +37,6 @@ const generateChangelog = async (config: Config) => {
     if (plugins) {
       postProcessedLogLines = plugins.reduce((acc, plugin) => plugin(acc), logLines);
     }
-    console.log(postProcessedLogLines);
     changelog = appendReleaseChanges(postProcessedLogLines, changelog, options.version, options.title);
 
     fs.writeFileSync(changelogFile, changelog, {
