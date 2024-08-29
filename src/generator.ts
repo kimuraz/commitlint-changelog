@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import {gitLogOneLine} from "./gitUtils";
 import {getCommitMessagesObjByType} from "./commitLintUtils";
+import type { Config } from "../types";
 
 export const appendReleaseChanges = (logLines: string[], changelog: string, newVersion: string, newVersionTitle: string) => {
     const logTypeMap = getCommitMessagesObjByType(logLines);
@@ -13,8 +14,10 @@ export const appendReleaseChanges = (logLines: string[], changelog: string, newV
     );
 }
 
-const generateChangelog = async (changelogFile: string, newVersion: string, newVersionTitle: string, fromTag: string = 'latest') => {
+const generateChangelog = async (config: Config) => {
+    const { options, plugins } = config;
 
+    const changelogFile = options.output;
     let changelog = '# Changelog \n\n';
 
     if (fs.existsSync(changelogFile)) {
@@ -29,8 +32,11 @@ const generateChangelog = async (changelogFile: string, newVersion: string, newV
     }
 
     try {
-        const logLines: string[] = await gitLogOneLine(fromTag);
-        changelog = appendReleaseChanges(logLines, changelog, newVersion, newVersionTitle);
+        console.log(plugins, options);
+        const logLines: string[] = await gitLogOneLine(options.startTag);
+        const postProcessedLogLines = plugins.reduce((acc, plugin) => plugin(acc), logLines);
+        console.log(postProcessedLogLines);
+        changelog = appendReleaseChanges(postProcessedLogLines, changelog, options.version, options.title);
 
         fs.writeFileSync(changelogFile, changelog, {
             encoding: 'utf-8',
